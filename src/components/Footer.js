@@ -6,7 +6,7 @@ function Footer() {
     return (
       <footer className="footer">
         <div className="icon-container">
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/gabmora" target="_blank" rel="noopener noreferrer">
           <FaGithub size={30} /> {/* Adjust size as needed */}
         </a>
         <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">

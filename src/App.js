@@ -17,7 +17,6 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
 
       </Routes>
-        <p>test</p>
       <Footer/>
       <aside className="sidebar">Sidebar</aside>
     </Router>
