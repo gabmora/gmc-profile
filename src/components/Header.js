@@ -15,10 +15,8 @@ function Header(){
     </Link>
     <nav className="header-nav">
         <Link to="/about" className="nav-link">01. About </Link>
-        <Link to="/experiance" className="nav-link">02. Experiance</Link>
-        <Link to="/services" className="nav-link">03. Services</Link>
-      
-        <Link to="/contact" className="nav-link">04. Contact</Link>
+        <Link to="/services" className="nav-link">02. Services</Link>
+        <Link to="/contact" className="nav-link">03. Contact</Link>
         {/* <Route path="/Contact" element={<Contact />} ></Route> */}
       
         <button className="resume-button">Resume</button>
