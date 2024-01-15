@@ -5,6 +5,7 @@ import Main from './Main';
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Contact from './components/Contact'
+import Services from './components/Services';
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <Routes>
       <Route path="/" element={<Main />} />
         <Route path="/about" element={<Main />} />
+        <Route path="/Services" element={<Services />} />
         <Route path="/Contact" element={<Contact />} />
-
       </Routes>
       <Footer/>
       <aside className="sidebar">Sidebar</aside>
