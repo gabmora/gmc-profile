@@ -5,8 +5,8 @@ import Main from './Main';
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Contact from './components/Contact'
-import Services from './components/Services';
-
+import Services from './components/Services'
+import Weather from './components/Weather'
 function App() {
   return (
     <div className="grid-container">
@@ -19,7 +19,9 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
       </Routes>
       <Footer/>
-      <aside className="sidebar">Sidebar</aside>
+      <aside className="sidebar">
+        <Weather /> 
+      </aside>
     </Router>
     </div>
   );

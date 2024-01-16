@@ -1,10 +1,13 @@
 import React from "react";
-import './Main.css';
+import './App.css';
 
 function Main(){
     console.log("Main page rendered")
     return(
-        <main className="main">Main Content</main>
+        <div className="main">
+            <h2>Data Engineer & Notary Public</h2>
+            <main className="main">Main Content</main>
+        </div>
     )
 
 }

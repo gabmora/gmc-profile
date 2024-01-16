@@ -1,0 +1,22 @@
+
+.flex {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    justify-content: space-around; /* Center items with space around them */
+    align-items: center; /* Vertically center items */
+    margin-top: 1.5rem; /* Adjust as needed */
+  }
+  
+  .button {
+    background-color: #007BFF; /* Background color for buttons */
+    color: white;
+    font-size: 1.5rem; /* Adjust font size as needed */
+    padding: 0.5rem 0.5rem; /* Adjust padding as needed */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Show pointer cursor on hover */
+  }
+  
+  .button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }
+  

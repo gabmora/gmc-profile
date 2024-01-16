@@ -30,12 +30,12 @@
 
 .sidebar {
   grid-area: sidebar;
-  background-color: blueviolet;
+  background-color:#007BFF;
 }
 
 .main {
   grid-area: main;
-  background-color: rgb(139, 128, 240);
+  background-color: rgb(162, 155, 226);
 }
 
 
