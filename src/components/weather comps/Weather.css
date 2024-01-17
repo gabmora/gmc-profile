@@ -20,3 +20,159 @@
     background-color: #0056b3; /* Change background color on hover */
   }
   
+  /* Inputs.css */
+
+
+.flex-container-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.input-box {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0.5rem;
+  width: 100%;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+  outline: none;
+  text-transform: lowercase;
+}
+
+/* Style for the search and location icons */
+.icon {
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.icon:hover {
+  transform: scale(1.25);
+}
+
+
+.button {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: white;
+}
+.separtor{
+  font-size: 1.5rem;
+  color: white;
+}
+
+
+.bg-gray-900 {
+  background-color: #1a202c;
+}
+
+
+.time-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem; 
+}
+
+.time-text {
+  color: white;
+  font-weight: 200; 
+  font-size: 1.5rem; 
+}
+
+
+.location-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem; 
+}
+
+.location-text {
+  color: white;
+  font-weight: 500; 
+  font-size: 2rem; 
+}
+
+/* tempanddeatils.css */
+
+/* Styling for the outermost container */
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #1a202c;
+  color: white;
+  padding: 1rem;
+}
+
+/* Styling for the weather condition */
+.weather-condition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #48bb78; /* Cyan color, adjust as needed */
+}
+
+/* Styling for the weather icon */
+.weather-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Styling for the temperature */
+.temperature {
+  font-size: 5rem;
+}
+
+/* Styling for weather details */
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Styling for weather detail items */
+.weather-detail-item {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #9f9f9f; /* Light gray color, adjust as needed */
+}
+
+/* Styling for icons in weather detail items */
+.weather-detail-icon {
+  margin-right: 0.5rem;
+  font-size: 1.125rem;
+}
+
+/* Styling for sunrise and sunset information */
+.sunrise-sunset {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #9f9f9f; /* Light gray color, adjust as needed */
+  padding: 0.5rem 0;
+}
+
+/* Styling for the separator between sunrise and sunset */
+.sunrise-sunset-separator {
+  margin: 0 0.5rem;
+}
+
+/* Styling for high and low temperature information */
+.high-low-temperature {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #9f9f9f; /* Light gray color, adjust as needed */
+  padding: 0.5rem 0;
+}
