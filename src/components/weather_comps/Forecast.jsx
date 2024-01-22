@@ -18,7 +18,7 @@ function Forecast({title}) {
                     className="w-12 my-1"
                     alt=""
                     />
-                    <p className="font-medium">23°</p>
+                    <p className="font-medium">24°</p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <p className="font-light text-sm">
