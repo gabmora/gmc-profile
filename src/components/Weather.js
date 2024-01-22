@@ -1,8 +1,9 @@
 import React from 'react';
-import TopButtons from "./weather comps/TopButtons"
-import Inputs from './weather comps/Inputs';
-import TimeAndLocation from './weather comps/TimeAndLocation';
-import TemperatureAndDetails from './weather comps/TemperatureAndDetails';
+import TopButtons from "./weather_comps/TopButtons"
+import Inputs from './weather_comps/Inputs';
+import TimeAndLocation from './weather_comps/TimeAndLocation';
+import TemperatureAndDetails from './weather_comps/TemperatureAndDetails';
+import Forecast from './weather_comps/Forecast';
 
 
 function Weather(){
@@ -13,6 +14,8 @@ return(
         <Inputs />
         <TimeAndLocation />
         <TemperatureAndDetails />
+        <Forecast title="hourly forecast"/>
+        {/* <Forecast title="daily forecast"/> */}
     </div>
     );
 }

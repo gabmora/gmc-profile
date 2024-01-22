@@ -176,3 +176,58 @@
   color: #9f9f9f; /* Light gray color, adjust as needed */
   padding: 0.5rem 0;
 }
+
+/* weather.css */
+
+/* ... existing styles ... */
+
+/* Forecast Component Styles */
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem; /* Adjust margin as needed */
+}
+
+.forecast-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  text-transform: uppercase;
+}
+
+.forecast-divider {
+  width: 100%;
+  height: 2px;
+  background-color: #9f9f9f; /* Light gray color, adjust as needed */
+  margin: 0.5rem 0;
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+.forecast-time {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: white;
+}
+
+.forecast-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.5rem 0;
+}
+
+.forecast-temperature {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+}
