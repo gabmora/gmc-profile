@@ -6,11 +6,12 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5/"
 // https://api.openweathermap.org/data/2.5/weather?q=Dallas,usa&APPID=d2888d37664143799cccb1ffd7200076
 
 
-const getWeatherData = (infoType, searchParams) => {
+const getWeatherData = async (infoType, searchParams) => {
     const url = new URL(BASE_URL + "/" + infoType);
     url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
   
-    return fetch(url).then((res) => res.json());
+    const res = await fetch(url);
+  return await res.json();
   };
   
   const formatCurrentWeather = (data) => {
@@ -45,29 +46,26 @@ const getWeatherData = (infoType, searchParams) => {
     };
   };
   
-  const formatForecastWeather = (data) => {
-    let { timezone, daily, hourly } = data;
+  
+const formatForecastWeather = (data) => {
+  let { timezone, daily, hourly } = data;
+  daily = daily.slice(1, 6).map((d) => {
+    return {
+      title: formatToLocalTime(d.dt, timezone, "ccc"),
+      temp: d.temp.day,
+      icon: d.weather[0].icon,
+    };
+  });
 
-    // Check if 'hourly' is undefined or not an array
-    if (!hourly || !Array.isArray(hourly)) {
-        console.error("Hourly data is undefined or not an array in formatForecastWeather function.");
-        return { timezone, daily: [], hourly: [] };
-    }
+  hourly = hourly.slice(1, 6).map((d) => {
+    return {
+      title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
+      temp: d.temp,
+      icon: d.weather[0].icon,
+    };
+  });
 
-    // Check if the array has at least 6 elements before slicing
-    if (hourly.length >= 6) {
-        hourly = hourly.slice(1, 6).map((d) => {
-            return {
-                title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
-                temp: d.temp,
-                icon: d.weather[0].icon,
-            };
-        });
-    } else {
-        console.warn("Hourly data does not have enough elements in formatForecastWeather function.");
-    }
-
-    return { timezone, daily: [], hourly };
+  return { timezone, daily, hourly };
 };
 
   
