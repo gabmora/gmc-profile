@@ -29,8 +29,8 @@ function Weather(){
     
 return(
     <div>
-        <TopButtons />
-        <Inputs />
+        <TopButtons setQuery={setQuery}/>
+        <Inputs setQuery units setUnits/>
 
         {weather && (
             <div>
