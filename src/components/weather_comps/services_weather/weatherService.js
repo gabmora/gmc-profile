@@ -47,26 +47,31 @@ const getWeatherData = async (infoType, searchParams) => {
   };
   
   
-const formatForecastWeather = (data) => {
-  let { timezone, daily, hourly } = data;
-  daily = daily.slice(1, 6).map((d) => {
-    return {
-      title: formatToLocalTime(d.dt, timezone, "ccc"),
-      temp: d.temp.day,
-      icon: d.weather[0].icon,
-    };
-  });
+  const formatForecastWeather = (data) => {
+    let { timezone, hourly } = data;
 
-  hourly = hourly.slice(1, 6).map((d) => {
-    return {
-      title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
-      temp: d.temp,
-      icon: d.weather[0].icon,
-    };
-  });
+    // Check if 'hourly' is undefined or not an array
+    if (!hourly || !Array.isArray(hourly)) {
+        console.error("Hourly data is undefined or not an array in formatForecastWeather function.");
+        return { timezone, hourly: [] };
+    }
 
-  return { timezone, daily, hourly };
+    // Check if the array has at least 6 elements before slicing
+    if (hourly.length >= 6) {
+        hourly = hourly.slice(1, 6).map((d) => {
+            return {
+                title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
+                temp: d.temp,
+                icon: d.weather && d.weather[0] ? d.weather[0].icon : null,
+            };
+        });
+    } else {
+        console.warn("Hourly data does not have enough elements in formatForecastWeather function.");
+    }
+
+    return { timezone, hourly };
 };
+
 
   
   const getFormattedWeatherData = async (searchParams) => {

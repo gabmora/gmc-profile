@@ -3,13 +3,15 @@ import TopButtons from "./weather_comps/TopButtons"
 import Inputs from './weather_comps/Inputs';
 import TimeAndLocation from './weather_comps/TimeAndLocation';
 import TemperatureAndDetails from './weather_comps/TemperatureAndDetails';
-import Forecast from './weather_comps/Forecast';
+// import Forecast from './weather_comps/Forecast';
 import getFormattedWeatherData from './weather_comps/services_weather/weatherService';
+// import { ToastContainer, toast } from 'react-toastify';
+//     import 'react-toastify/dist/ReactToastify.css';
 
 
 function Weather(){
 
-    const [query, setQuery] = useState({q: "berlin"})
+    const [query, setQuery] = useState({q: "chicago"})
     const [units, setUnits] = useState("imperial")
     const [weather, setWeather] = useState(null)
 
@@ -27,10 +29,11 @@ function Weather(){
         fetchWeather();
     }, [query, units]);
     
+    
 return(
     <div>
         <TopButtons setQuery={setQuery}/>
-        <Inputs setQuery units setUnits/>
+        <Inputs setQuery={setQuery} units={units} setUnits={setUnits}/>
 
         {weather && (
             <div>
@@ -40,6 +43,7 @@ return(
             {/* <Forecast title="daily forecast"/> */}
             </div>
         )}
+    {/* <ToastContainer autoCLose={5000} theme='colored' newestOnTop={true} /> */}
     </div>
     );
 }
