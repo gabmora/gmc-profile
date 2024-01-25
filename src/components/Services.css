@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+img {
+    background-color: transparent;
+    align-items:baseline;
+  }
+
+.title {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size:150%;
+
+}
+.full-screen-image {
+    width: 100%;    /* Make the image take up the full width of its container */
+    object-fit: cover;  /* Cover the container while maintaining aspect ratio */
+  }
+
+.service-list{
+    font-family: 'Montserrat';
+}

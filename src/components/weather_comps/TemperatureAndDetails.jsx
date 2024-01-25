@@ -6,25 +6,26 @@ import {
   UilSun,
   UilSunset
 } from '@iconscout/react-unicons';
-import './Weather.css'; // Import the CSS file
+import './Weather.css'; 
 import { formatToLocalTime, iconUrlFromCode } from './services_weather/weatherService';
 
 function TemperatureAndDetails({weather:{details, icon, temp, temp_min, temp_max,sunrise,
   sunset,speed, humidity, feels_like, timezone}}) {
   return (
-    <div className="weather-container">
-      <div className="weather-condition">
-        <p>{details}</p>
-      </div>
 
+    <div className="weather-container">
       <div className="weather-details">
         <img
           src={iconUrlFromCode(icon)}
           alt=""
           className="weather-icon"
         />
-        <p className="temperature">{`${temp.toFixed()}°`}</p>
 
+      <div className="weather-condition">
+        <p>{details}</p>
+      </div>
+
+        <p className="temperature">{`${temp.toFixed()}°`}</p>
         <div className="weather-detail-item">
           <UilTemperature className="weather-detail-icon" size={18} />
           Real fell:

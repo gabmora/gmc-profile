@@ -114,15 +114,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  /* padding: 1rem; */
   font-size: 1.5rem;
-  color: #48bb78; /* Cyan color, adjust as needed */
+  color: #48bb78; 
 }
 
 /* Styling for the weather icon */
 .weather-icon {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 /* Styling for the temperature */
@@ -137,7 +137,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 /* Styling for weather detail items */
@@ -145,7 +145,7 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
-  color: #9f9f9f; /* Light gray color, adjust as needed */
+  color: #9f9f9f; 
 }
 
 /* Styling for icons in weather detail items */
@@ -159,7 +159,7 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
-  color: #9f9f9f; /* Light gray color, adjust as needed */
+  color: #9f9f9f; 
   padding: 0.5rem 0;
 }
 

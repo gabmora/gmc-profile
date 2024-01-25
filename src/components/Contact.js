@@ -111,7 +111,7 @@ function Contact() {
             required
           >
             <option value="">Select an option</option>
-            <option value="Initial Consultation">Initial Consultation</option>
+            <option value="Notary Service">Notary Service</option>
             <option value="Follow Up">Follow Up</option>
           </select>
         </div>
