@@ -7,6 +7,8 @@ import { Header, PDFViewer } from './components/Header';
 import Contact from './components/Contact';
 import Services from './components/Services';
 import Weather from './components/Weather';
+import SidebarWithWeather from './components/SidebarWithWeather';
+
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
         </Routes>
         <Footer />
         <aside className="sidebar">
-          <Weather />
+          <SidebarWithWeather />
         </aside>
       </Router>
     </div>

@@ -5,7 +5,7 @@ function Main(){
     console.log("Main page rendered")
     return(
         <div className="main">
-            <h2>Data Engineer & Notary Public</h2>
+            <h1>Data Engineer & Notary Public</h1>
         </div>
     )
 

@@ -3,3 +3,12 @@
     grid-area: main;
     background-color: rgb(139, 128, 240);
 }
+
+h1{
+    font-family: Montserrat;
+    color: rgb(159, 36, 36);
+    font-weight: 600;
+    font-size: 60px;
+  
+  }
+

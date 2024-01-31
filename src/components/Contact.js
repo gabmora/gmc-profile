@@ -58,9 +58,12 @@ function Contact() {
   };
   return (
     <div className='main'>
-
+      <div className="text-container">
+        <h1>Let's Talk!</h1>
+      <p>This contact form will send a direct email to my personal email. I promise to respond within 24 hours. If you prefer I reach out to you over a phone call, please utilize the date and time field for a convient time I can reach out. If you're cool with an email, select the the time and date you send the message.</p>
+    </div>
     <div className="BookingPage-container">
-      <h1>CONTACT ME</h1>
+      <h2>CONTACT ME</h2>
       <form className="BookingPage-form" onSubmit={sendEmail}>
         <div>
           <label htmlFor="name"></label>

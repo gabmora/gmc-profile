@@ -34,7 +34,7 @@ h2{
 
 .sidebar {
   grid-area: sidebar;
-  background-color:rgb(159, 238, 238);
+  background-color:rgb(159, 238, 238)#31dbfe;
   background-origin: 40px;
 }
 
@@ -52,4 +52,13 @@ h2{
   width: 100%;
   padding: 10px;
   background-color: rgb(159, 238, 238);
+}
+
+.main-container {
+  transition: margin-left 0.5s;
+  padding: 20px; /* Add padding as needed */
+}
+
+.sidebar-minimized .main-container {
+  margin-left: 0;
 }
