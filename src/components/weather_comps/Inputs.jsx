@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons';
 import './Weather.css'; 
+
+
 function Inputs({setQuery, units, setUnits}) {
   const [city, setCity] = useState("");
   const handleSearchClick = () => {
@@ -33,16 +35,19 @@ function Inputs({setQuery, units, setUnits}) {
         />
         <UilSearch size={25} className="icon" 
         onClick={handleSearchClick}/>
+
         <UilLocationPoint size={25} className="icon" 
         onClick={handleLocationClick}/>
 
-        <button name="metric" className="button"
-        onClick={handleUnitChange}>°C</button>
-        <p className="separtor">|</p>
+        <div className='flex-container-inputs'>
+          <button name="metric" className="icon"
+          onClick={handleUnitChange}>°C</button>
+          {/* <p className="separtor">|</p> */}
 
-        <button name="imperial" className="button"
-        onClick={handleUnitChange}>°F
-        </button>
+          <button name="imperial" className="icon"
+          onClick={handleUnitChange}>°F
+          </button>
+        </div>
   </div>
 );
 }

@@ -10,6 +10,10 @@
   }
 }
 
+h2{
+  color: #31dbfe;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 3fr; /* 1 fraction for the sidebar, 3 fractions for the main content */
@@ -25,17 +29,18 @@
 
 .header {
   grid-area: header;
-  background-color: lightcyan;
+  background-color: rgb(159, 238, 238);
 }
 
 .sidebar {
   grid-area: sidebar;
-  background-color:#007BFF;
+  background-color:rgb(159, 238, 238);
+  background-origin: 40px;
 }
 
 .main {
   grid-area: main;
-  background-color: rgb(162, 155, 226);
+  background-color: black;
 }
 
 
@@ -46,5 +51,5 @@
   align-items: center;
   width: 100%;
   padding: 10px;
-  background-color: lightcyan;
+  background-color: rgb(159, 238, 238);
 }

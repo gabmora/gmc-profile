@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import emailjs from 'emailjs-com'; // Import the emailjs-com library
-
+import emailjs from 'emailjs-com'; 
+import './Contact.css';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ function Contact() {
   });
 
   const [success, setSuccess] = useState(false);
-  // Define the handleChange function
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,7 +24,6 @@ function Contact() {
     });
   };
 
-  // Define the handleDateChange function
   const handleDateChange = (date) => {
     setFormData({
       ...formData,
@@ -36,7 +35,7 @@ function Contact() {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_577plbq', 'template_695831i', e.target, 'z01pUKhhurokO_4ff')
+      .sendForm('service_wq0fz1y', 'template_cn8n1gi', e.target, 'z01pUKhhurokO_4ff') //!!!!template_cn8n1gi
       .then((res) => {
         console.log('Email sent successfully:', res);
         setSuccess(true);
@@ -58,8 +57,10 @@ function Contact() {
       setSuccess(false);
   };
   return (
+    <div className='main'>
+
     <div className="BookingPage-container">
-      <h1>SERVICE REQUEST</h1>
+      <h1>CONTACT ME</h1>
       <form className="BookingPage-form" onSubmit={sendEmail}>
         <div>
           <label htmlFor="name"></label>
@@ -72,7 +73,7 @@ function Contact() {
             onChange={handleChange}
             placeholder="Name"
             required
-          />
+            />
         </div>
         <div>
           <label htmlFor="email"></label>
@@ -85,7 +86,7 @@ function Contact() {
             onChange={handleChange}
             placeholder="Email"
             required
-          />
+            />
         </div>
         <div>
           <label htmlFor="phoneNumber"></label>
@@ -98,7 +99,7 @@ function Contact() {
             onChange={handleChange}
             placeholder="Phone Number"
             required
-          />
+            />
         </div>
         <div>
           <label htmlFor="appointmentType"></label>
@@ -109,10 +110,10 @@ function Contact() {
             value={formData.appointmentType}
             onChange={handleChange}
             required
-          >
+            >
             <option value="">Select an option</option>
             <option value="Notary Service">Notary Service</option>
-            <option value="Follow Up">Follow Up</option>
+            <option value="Web Dev Help">Web Dev Help</option>
           </select>
         </div>
         <div>
@@ -130,7 +131,7 @@ function Contact() {
             dateFormat="MMMM d, yyyy h:mm aa"
             placeholderText="Select a date and time"
             required
-          />
+            />
         </div>
         <div>
           <label htmlFor="description"></label>
@@ -140,12 +141,12 @@ function Contact() {
             className="BookingPage-input"
             value={formData.description}
             onChange={handleChange}
-            placeholder="Description"
+            placeholder="what's up?"
             required
-          />
+            />
         </div>
         <button className="BookingPage-button" type="submit">
-          Submit
+          SEND
         </button>
         </form>
         {success && (
@@ -155,11 +156,12 @@ function Contact() {
                 &times;
               </span>
               <p>   Thanks for your message,    </p>
-              <p>   we'll be in touch shortly!   </p>
+              <p>  I'll reach back to you shortly!   </p>
             </div>
           </div>
         )}
 
+    </div>
     </div>
   );
 }
