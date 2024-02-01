@@ -5,6 +5,7 @@ import './Weather.css';
 
 function Inputs({setQuery, units, setUnits}) {
   const [city, setCity] = useState("");
+
   const handleSearchClick = () => {
     if (city !== '') setQuery({q: city})
   }
@@ -24,6 +25,18 @@ function Inputs({setQuery, units, setUnits}) {
       });
     }
   };
+
+  const handleSearch = () => {
+    if (city.trim() !== ''){
+      setQuery({q: city});
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter'){
+      handleSearchClick();
+    }
+  };
   return (
     <div className="flex-container-inputs">
         <input
@@ -32,6 +45,8 @@ function Inputs({setQuery, units, setUnits}) {
         type="text"
         placeholder="Search for city..."
         className="input-box"
+        style={{color: 'black'}}
+        onKeyDown={handleKeyDown}
         />
         <UilSearch size={25} className="icon" 
         onClick={handleSearchClick}/>

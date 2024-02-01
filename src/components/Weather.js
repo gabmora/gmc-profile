@@ -31,12 +31,12 @@ function Weather(){
     
     
 return(
-    <div>
+    <div className='sidebar-content'>
         <TopButtons setQuery={setQuery}/>
         <Inputs setQuery={setQuery} units={units} setUnits={setUnits}/>
 
         {weather && (
-            <div>
+            <div >
             <TimeAndLocation weather={weather}/>
             <TemperatureAndDetails weather={weather}/>
             {/* <Forecast title="hourly forecast" items = {weather.hourly}/> */}

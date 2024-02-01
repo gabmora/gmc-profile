@@ -17,14 +17,14 @@ h2{
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 3fr; /* 1 fraction for the sidebar, 3 fractions for the main content */
-  grid-template-rows: auto 1fr auto; /* Header, main content, and footer */
+  grid-template-rows: auto 1fr auto;  /*Header, main content, and footer */
   grid-template-areas: 
     "header header"
     "sidebar main"
     "footer footer";
   height: 100vh;
-  border: 2px;
-  box-sizing: border-box;
+  /* border: 2px;
+  box-sizing: border-box; */
 }
 
 .header {
@@ -37,6 +37,8 @@ h2{
   background-color:rgb(159, 238, 238)#31dbfe;
   background-origin: 40px;
 }
+
+
 
 .main {
   grid-area: main;
