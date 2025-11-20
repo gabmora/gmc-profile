@@ -1,32 +1,39 @@
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+}
+
+.footer a {
+  margin: 0 15px;
+  color: white;
+  transition: all 0.3s ease;
+  font-size: 24px;
+}
+
+.footer a:hover {
+  color: #ffd700;
+  transform: translateY(-3px);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
   }
-  
+
   .footer a {
+    font-size: 20px;
     margin: 0 10px;
-    color: black; /* Icon color */
-    transition: color 0.3s ease;
   }
-  
-  .footer a:hover {
-    color: #0077b5; /* Color change on hover (LinkedIn blue for example) */
-  }
-  
-  .icon-container {
-    display: flex;
-    justify-content: center;
-    /* Add other styles as needed */
-  }
-  
-  /* Media query should come after the base styles */
-  @media (max-width: 768px) {
-    .footer {
-      width: 100%;
-      /* Other responsive styles for footer */
-    }
-  }
+}
   

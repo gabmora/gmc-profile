@@ -4,7 +4,7 @@ import './Header.css';
 
 
 function PDFViewer() {
-    const pdfFilePath = process.env.PUBLIC_URL + '/gmorales_CV.pdf';
+    const pdfFilePath = process.env.PUBLIC_URL + '/gabrielaMorales_cv.pdf';
     return (
       <div className="pdf-viewer">
         <iframe src={pdfFilePath} title="PDF Viewer" width="100%" height="600px" />
@@ -14,11 +14,11 @@ function PDFViewer() {
 function Header() {
   return (
     <header className="header">
-      <Link to="/" className="logo-link">
-        <div className="header-logo"></div>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <div className="header-logo">GMC</div>
       </Link>
       <nav className="header-nav">
-        <Link to="/about" className="nav-link">
+        <Link to="/" className="nav-link">
           About
         </Link>
         <Link to="/services" className="nav-link">
@@ -27,8 +27,8 @@ function Header() {
         <Link to="/contact" className="nav-link">
           Contact
         </Link>
-        <Link to="/pdf-viewer" className="nav-link">
-          <button className="resume-button">CHECK OUT MY RESUME</button>
+        <Link to="/pdf-viewer" className="resume-button">
+          Resume
         </Link>
       </nav>
     </header>
