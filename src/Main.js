@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import './Main.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFilePdf, FaChevronDown, FaCloudSun, FaExternalLinkAlt, FaSun, FaMoon } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFilePdf, FaChevronDown, FaCloudSun, FaExternalLinkAlt, FaSun, FaMoon, FaReact, FaNodeJs, FaPython, FaAws, FaDatabase, FaDocker, FaGitAlt } from 'react-icons/fa';
+import { SiExpress, SiMysql, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiCsharp, SiDotnet, SiAzuredevops, SiPowerbi, SiPostman, SiShopify, SiQuickbooks, SiCloudflare, SiRailway, SiGoogledrive, SiSupabase, SiOpenai, SiTailwindcss, SiGooglemaps } from 'react-icons/si';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import emailjs from 'emailjs-com';
 import getFormattedWeatherData from './components/weather_comps/services_weather/weatherService';
+import Typed from 'typed.js';
 
 function Main(){
     const [scrolled, setScrolled] = useState(false);
@@ -22,6 +24,7 @@ function Main(){
     const [language, setLanguage] = useState('en');
     const [statsInView, setStatsInView] = useState(false);
     const statsRef = useRef(null);
+    const typedRef = useRef(null);
 
     // Language translations
     const translations = {
@@ -94,6 +97,7 @@ function Main(){
     const t = translations[language];
 
     useEffect(() => {
+        let hasTriggeredStats = false;
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
 
@@ -108,10 +112,11 @@ function Main(){
             });
 
             // Stats counter trigger
-            if (statsRef.current) {
+            if (statsRef.current && !hasTriggeredStats) {
                 const rect = statsRef.current.getBoundingClientRect();
                 const isVisible = rect.top < window.innerHeight * 0.75;
-                if (isVisible && !statsInView) {
+                if (isVisible) {
+                    hasTriggeredStats = true;
                     setStatsInView(true);
                 }
             }
@@ -119,7 +124,7 @@ function Main(){
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // Check on mount
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [statsInView]);
+    }, []);
 
     useEffect(() => {
         const fetchWeather = async (lat, lon) => {
@@ -162,6 +167,28 @@ function Main(){
             // Browser doesn't support geolocation, use Hoboken as fallback
             console.warn("Geolocation not supported by this browser");
             fetchWeather(40.7439, -74.0324);
+        }
+    }, []);
+
+    // Typed.js initialization
+    useEffect(() => {
+        if (typedRef.current) {
+            const typed = new Typed(typedRef.current, {
+                strings: [
+                    'Full-Stack Software Engineer',
+                    'React Developer',
+                    'Node.js Expert',
+                    'Cloud Architect',
+                    'Data Engineer'
+                ],
+                typeSpeed: 60,
+                backSpeed: 40,
+                loop: true
+            });
+
+            return () => {
+                typed.destroy();
+            };
         }
     }, []);
 
@@ -249,11 +276,11 @@ function Main(){
                 <div className="nav-content">
                     <div className="nav-logo">GMC</div>
                     <div className="nav-links">
-                        <a onClick={() => scrollToSection('about')}>{t.nav.about}</a>
-                        <a onClick={() => scrollToSection('experience')}>{t.nav.experience}</a>
-                        <a onClick={() => scrollToSection('skills')}>{t.nav.skills}</a>
-                        <a onClick={() => scrollToSection('projects')}>{t.nav.projects}</a>
-                        <a onClick={() => scrollToSection('contact')}>{t.nav.contact}</a>
+                        <button onClick={() => scrollToSection('about')}>{t.nav.about}</button>
+                        <button onClick={() => scrollToSection('experience')}>{t.nav.experience}</button>
+                        <button onClick={() => scrollToSection('skills')}>{t.nav.skills}</button>
+                        <button onClick={() => scrollToSection('projects')}>{t.nav.projects}</button>
+                        <button onClick={() => scrollToSection('contact')}>{t.nav.contact}</button>
                     </div>
                     <div className="nav-controls">
                         <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
@@ -286,7 +313,9 @@ function Main(){
                         <h1 className="hero-title">
                             {t.hero.greeting} <span className="highlight">Gabriela Morales</span>
                         </h1>
-                        <h2 className="hero-subtitle">{t.hero.title}</h2>
+                        <h2 className="hero-subtitle">
+                            <span ref={typedRef}></span>
+                        </h2>
                         <p className="hero-description">
                             {t.hero.description}
                         </p>
@@ -301,7 +330,7 @@ function Main(){
                         <div className="hero-social">
                             <a href="https://github.com/diniwigs" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
                             <a href="https://www.linkedin.com/in/gabriela-morales" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-                            <a href="mailto:gabrielamoralescg@gmail.com"><FaEnvelope /></a>
+                            {/* <a href="mailto:gabrielamoralescg@gmail.com"><FaEnvelope /></a> */}
                         </div>
                     </div>
                 </div>
@@ -359,11 +388,11 @@ function Main(){
                                     Cloudflare, and Azure maintaining 99.5% uptime.
                                 </p>
                                 <div className="tech-tags">
-                                    <span>React</span>
-                                    <span>Node.js</span>
-                                    <span>SQL Server</span>
-                                    <span>Azure</span>
-                                    <span>QuickBooks API</span>
+                                    <span><FaReact className="tech-icon" /> React</span>
+                                    <span><FaNodeJs className="tech-icon" /> Node.js</span>
+                                    <span><FaDatabase className="tech-icon" /> SQL Server</span>
+                                    <span><SiAzuredevops className="tech-icon" /> Azure</span>
+                                    <span><SiQuickbooks className="tech-icon" /> QuickBooks API</span>
                                 </div>
                             </div>
                         </div>
@@ -380,10 +409,10 @@ function Main(){
                                     SDKs for external API integrations.
                                 </p>
                                 <div className="tech-tags">
-                                    <span>Python</span>
-                                    <span>MySQL</span>
-                                    <span>Shopify API</span>
-                                    <span>SAP</span>
+                                    <span><FaPython className="tech-icon" /> Python</span>
+                                    <span><SiMysql className="tech-icon" /> MySQL</span>
+                                    <span><SiShopify className="tech-icon" /> Shopify API</span>
+                                    <span><FaDatabase className="tech-icon" /> SAP</span>
                                 </div>
                             </div>
                         </div>
@@ -400,10 +429,10 @@ function Main(){
                                     configuration for enterprise security applications.
                                 </p>
                                 <div className="tech-tags">
-                                    <span>Python</span>
-                                    <span>AWS</span>
-                                    <span>Power BI</span>
-                                    <span>SQL</span>
+                                    <span><FaPython className="tech-icon" /> Python</span>
+                                    <span><FaAws className="tech-icon" /> AWS</span>
+                                    <span><SiPowerbi className="tech-icon" /> Power BI</span>
+                                    <span><FaDatabase className="tech-icon" /> SQL</span>
                                 </div>
                             </div>
                         </div>
@@ -415,74 +444,172 @@ function Main(){
             <section className="section skills-section fade-in-section" id="skills">
                 <div className="container">
                     <h2 className="section-title">Skills & Technologies</h2>
-                    <div className="skills-grid">
-                        <div className="skill-card">
-                            <h3>Frontend</h3>
-                            <div className="skill-list">
-                                <span>React.js</span>
-                                <span>JavaScript (ES6+)</span>
-                                <span>TypeScript</span>
-                                <span>HTML5 & CSS3</span>
-                                <span>ASP.NET Web Forms</span>
-                                <span>React Hooks</span>
-                                <span>Context API</span>
+                    <div className="skills-grid-bars">
+                        <div className="skill-category">
+                            <h3><FaReact className="category-icon" /> Frontend Development</h3>
+                            <div className="skill-bars">
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><FaReact className="skill-icon" /> React.js</span>
+                                        <span className="skill-percentage">95%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '95%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiJavascript className="skill-icon" /> JavaScript (ES6+)</span>
+                                        <span className="skill-percentage">92%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '92%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiTypescript className="skill-icon" /> TypeScript</span>
+                                        <span className="skill-percentage">85%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '85%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiHtml5 className="skill-icon" /> HTML5 & CSS3</span>
+                                        <span className="skill-percentage">90%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '90%'}}></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="skill-card">
-                            <h3>Backend</h3>
-                            <div className="skill-list">
-                                <span>Node.js</span>
-                                <span>Express.js</span>
-                                <span>ASP.NET</span>
-                                <span>C#</span>
-                                <span>Python</span>
-                                <span>RESTful APIs</span>
-                                <span>JWT Auth</span>
+                        <div className="skill-category">
+                            <h3><FaNodeJs className="category-icon" /> Backend Development</h3>
+                            <div className="skill-bars">
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><FaNodeJs className="skill-icon" /> Node.js</span>
+                                        <span className="skill-percentage">93%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '93%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiExpress className="skill-icon" /> Express.js</span>
+                                        <span className="skill-percentage">90%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '90%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiCsharp className="skill-icon" /> C# / ASP.NET</span>
+                                        <span className="skill-percentage">88%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '88%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><FaPython className="skill-icon" /> Python</span>
+                                        <span className="skill-percentage">87%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '87%'}}></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="skill-card">
-                            <h3>Database</h3>
-                            <div className="skill-list">
-                                <span>SQL Server</span>
-                                <span>MySQL</span>
-                                <span>MongoDB</span>
-                                <span>Azure SQL</span>
-                                <span>Query Optimization</span>
+                        <div className="skill-category">
+                            <h3><FaDatabase className="category-icon" /> Database & Cloud</h3>
+                            <div className="skill-bars">
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><FaDatabase className="skill-icon" /> SQL Server</span>
+                                        <span className="skill-percentage">91%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '91%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><FaAws className="skill-icon" /> AWS</span>
+                                        <span className="skill-percentage">86%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '86%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiAzuredevops className="skill-icon" /> Azure</span>
+                                        <span className="skill-percentage">84%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '84%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiMysql className="skill-icon" /> MySQL</span>
+                                        <span className="skill-percentage">88%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '88%'}}></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="skill-card">
-                            <h3>Cloud & DevOps</h3>
-                            <div className="skill-list">
-                                <span>AWS (Lambda, S3, EC2)</span>
-                                <span>Azure</span>
-                                <span>Railway</span>
-                                <span>Cloudflare</span>
-                                <span>IIS</span>
-                            </div>
-                        </div>
-
-                        <div className="skill-card">
-                            <h3>Data Engineering</h3>
-                            <div className="skill-list">
-                                <span>Python (Pandas)</span>
-                                <span>ETL Pipelines</span>
-                                <span>Power BI</span>
-                                <span>Tableau</span>
-                                <span>SAP Integration</span>
-                            </div>
-                        </div>
-
-                        <div className="skill-card">
-                            <h3>Tools & APIs</h3>
-                            <div className="skill-list">
-                                <span>Git</span>
-                                <span>QuickBooks API</span>
-                                <span>Shopify API</span>
-                                <span>OAuth 2.0</span>
-                                <span>Postman</span>
+                        <div className="skill-category">
+                            <h3><FaGitAlt className="category-icon" /> Tools & APIs</h3>
+                            <div className="skill-bars">
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><FaGitAlt className="skill-icon" /> Git</span>
+                                        <span className="skill-percentage">89%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '89%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiQuickbooks className="skill-icon" /> QuickBooks API</span>
+                                        <span className="skill-percentage">85%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '85%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiShopify className="skill-icon" /> Shopify API</span>
+                                        <span className="skill-percentage">82%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '82%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-bar-item">
+                                    <div className="skill-info">
+                                        <span className="skill-name"><SiPowerbi className="skill-icon" /> Power BI</span>
+                                        <span className="skill-percentage">80%</span>
+                                    </div>
+                                    <div className="skill-bar-bg">
+                                        <div className="skill-bar-fill" style={{'--skill-level': '80%'}}></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -510,8 +637,8 @@ function Main(){
             {/* Projects Section */}
             <section className="section projects-section fade-in-section" id="projects">
                 <div className="container">
-                    <h2 className="section-title">Featured Project</h2>
-                    <div className="project-showcase">
+                    <h2 className="section-title">Featured Projects</h2>
+                    <div className="projects-grid">
                         <div className="project-card-large">
                             <div className="project-header">
                                 <h3>DiNiTracker V2</h3>
@@ -531,25 +658,25 @@ function Main(){
                                     <h4>77+</h4>
                                     <span>REST Endpoints</span>
                                 </div>
-                                <div className="feature-item">
+                                {/* <div className="feature-item">
                                     <h4>15+</h4>
                                     <span>Database Tables</span>
-                                </div>
+                                </div> */}
                                 <div className="feature-item">
                                     <h4>99.5%</h4>
                                     <span>Uptime</span>
                                 </div>
                             </div>
                             <div className="project-tech">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>Express</span>
-                                <span>SQL Server</span>
-                                <span>Azure</span>
-                                <span>Railway</span>
-                                <span>Cloudflare</span>
-                                <span>QuickBooks API</span>
-                                <span>Google Drive API</span>
+                                <span><FaReact className="tech-icon" /> React</span>
+                                <span><FaNodeJs className="tech-icon" /> Node.js</span>
+                                <span><SiExpress className="tech-icon" /> Express</span>
+                                <span><FaDatabase className="tech-icon" /> SQL Server</span>
+                                <span><SiAzuredevops className="tech-icon" /> Azure</span>
+                                <span><SiRailway className="tech-icon" /> Railway</span>
+                                <span><SiCloudflare className="tech-icon" /> Cloudflare</span>
+                                <span><SiQuickbooks className="tech-icon" /> QuickBooks API</span>
+                                <span><SiGoogledrive className="tech-icon" /> Google Drive API</span>
                             </div>
                             <div className="project-highlights">
                                 <div className="highlight-item">
@@ -576,6 +703,67 @@ function Main(){
                                     <span className="demo-cred">Username: <strong>noga</strong></span>
                                     <span className="demo-cred">Password: <strong>123</strong></span>
                                 </div>
+                            </div>
+                        </div>
+
+                        {/* Cooling Kings Project */}
+                        <div className="project-card-large">
+                            <div className="project-header">
+                                <h3>K&E HVAC Platform</h3>
+                                <span className="project-tag">Full-Stack SaaS</span>
+                            </div>
+                            <p className="project-description">
+                                A comprehensive HVAC service management platform featuring AI-powered customer support,
+                                real-time scheduling, and geographic work order visualization. Combines customer-facing
+                                website with GPT-4 chatbot for lead generation and enterprise admin dashboard for complete
+                                business operations including appointment booking, customer management, and technician dispatch.
+                            </p>
+                            <div className="project-features">
+                                <div className="feature-item">
+                                    <h4>25+</h4>
+                                    <span>React Components</span>
+                                </div>
+                                {/* <div className="feature-item">
+                                    <h4>3,748</h4>
+                                    <span>Lines of Code</span>
+                                </div> */}
+                                <div className="feature-item">
+                                    <h4>5</h4>
+                                    <span>Service Modules</span>
+                                </div>
+                                <div className="feature-item">
+                                    <h4>AI</h4>
+                                    <span>Powered Chat</span>
+                                </div>
+                            </div>
+                            <div className="project-tech">
+                                <span><FaReact className="tech-icon" /> React 18</span>
+                                <span><SiSupabase className="tech-icon" /> Supabase</span>
+                                <span><SiOpenai className="tech-icon" /> OpenAI GPT-4</span>
+                                <span><SiGooglemaps className="tech-icon" /> Google Maps</span>
+                                <span><SiTailwindcss className="tech-icon" /> Tailwind CSS</span>
+                                <span><FaAws className="tech-icon" /> AWS Amplify</span>
+                            </div>
+                            <div className="project-highlights">
+                                <div className="highlight-item">
+                                    <strong>AI-Powered</strong> intelligent lead generation and customer support
+                                </div>
+                                <div className="highlight-item">
+                                    <strong>Real-Time</strong> calendar scheduling with FullCalendar integration
+                                </div>
+                                <div className="highlight-item">
+                                    <strong>Geographic</strong> map-based work order visualization and dispatch
+                                </div>
+                            </div>
+                            <div className="project-demo">
+                                <a
+                                    href="https://github.com/gabmora/coolingkings"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="demo-button"
+                                >
+                                    <FaGithub /> View on GitHub
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -676,10 +864,10 @@ function Main(){
                                     <FaMapMarkerAlt className="contact-icon" />
                                     <span>Hoboken, NJ 07030</span>
                                 </div>
-                                <div className="contact-item">
+                                {/* <div className="contact-item">
                                     <FaEnvelope className="contact-icon" />
                                     <a href="mailto:gabrielamoralescg@gmail.com">gabrielamoralescg@gmail.com</a>
-                                </div>
+                                </div> */}
                                 <div className="contact-item">
                                     <FaPhone className="contact-icon" />
                                     <a href="tel:201-844-3508">201-844-3508</a>
