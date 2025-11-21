@@ -55,7 +55,7 @@ function Sidebar() {
           <a href="https://github.com/diniwigs" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub">
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/gabriela-morales" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/gabriela-morales-19bb21202/" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
             <FaLinkedin />
           </a>
         </div>
