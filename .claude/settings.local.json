@@ -6,7 +6,10 @@
       "Bash(npm uninstall:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell:*)",
+      "Bash(del \"c:\\\\Users\\\\it\\\\gmc-profile\\\\rename-screens.ps1\")"
     ],
     "deny": [],
     "ask": []

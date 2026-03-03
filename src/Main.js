@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import './Main.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFilePdf, FaChevronDown, FaCloudSun, FaExternalLinkAlt, FaSun, FaMoon, FaReact, FaNodeJs, FaPython, FaAws, FaDatabase, FaDocker, FaGitAlt } from 'react-icons/fa';
-import { SiExpress, SiMysql, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiCsharp, SiDotnet, SiAzuredevops, SiPowerbi, SiPostman, SiShopify, SiQuickbooks, SiCloudflare, SiRailway, SiGoogledrive, SiSupabase, SiOpenai, SiTailwindcss, SiGooglemaps } from 'react-icons/si';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFilePdf, FaChevronDown, FaCloudSun, FaSun, FaMoon, FaReact, FaNodeJs, FaPython, FaAws, FaDatabase, FaDocker, FaGitAlt, FaChevronLeft, FaChevronRight, FaImages, FaTimes, FaGraduationCap, FaCertificate } from 'react-icons/fa';
+import { SiExpress, SiMysql, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiCsharp, SiDotnet, SiAzuredevops, SiPowerbi, SiPostman, SiShopify, SiQuickbooks, SiCloudflare, SiRailway, SiGoogledrive, SiSupabase, SiOpenai } from 'react-icons/si';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import emailjs from 'emailjs-com';
@@ -23,17 +23,35 @@ function Main(){
     const [theme, setTheme] = useState('dark');
     const [language, setLanguage] = useState('en');
     const [statsInView, setStatsInView] = useState(false);
+    const [diniScreenIndex, setDiniScreenIndex] = useState(0);
+    const [showDiniGallery, setShowDiniGallery] = useState(false);
     const statsRef = useRef(null);
     const typedRef = useRef(null);
+
+    const diniScreenshots = [
+        { src: '/dini-screens/dini-12.png', label: 'Work Order Form' },
+        { src: '/dini-screens/dini-1.png', label: 'Work Order Form - Saved Cards' },
+        { src: '/dini-screens/dini-2.png', label: 'Production Report' },
+        { src: '/dini-screens/dini-3.png', label: 'Customer Profile' },
+        { src: '/dini-screens/dini-4.png', label: 'Payment Form - Saved Cards' },
+        { src: '/dini-screens/dini-6.png', label: 'Inventory Management' },
+        { src: '/dini-screens/dini-9.png', label: 'Analytics Dashboard' },
+        { src: '/dini-screens/dini-7.png', label: 'Calendar View - Day' },
+        { src: '/dini-screens/dini-11.png', label: 'Calendar View - Week' },
+        { src: '/dini-screens/dini-10.png', label: 'Calendar View - Month' },
+        { src: '/dini-screens/dini-8.png', label: 'Appointment Management and Waitlist' },
+        { src: '/dini-screens/dini-5.png', label: 'Message Thread' },
+        { src: '/dini-screens/dini-13.png', label: 'Customer Invoice View - Secure Payment Processing' },
+    ];
 
     // Language translations
     const translations = {
         en: {
-            nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact' },
+            nav: { about: 'About', experience: 'Experience', education: 'Education', skills: 'Skills', projects: 'Products', contact: 'Contact' },
             hero: {
                 greeting: "Hi, I'm",
                 title: 'Full-Stack Software Engineer',
-                description: 'I build enterprise solutions that scale. 300K+ lines of production code deployed. 99.5% uptime. Expert in React, Node.js, C#, Python, and AWS.',
+                description: 'I build enterprise solutions that scale. 70% faster operations. 10+ hrs/week automated. 99.5% uptime. Expert in React, Node.js, and cloud architecture.',
                 cta: 'Get In Touch',
                 resume: 'View Resume'
             },
@@ -61,11 +79,11 @@ function Main(){
             }
         },
         fr: {
-            nav: { about: 'À Propos', experience: 'Expérience', skills: 'Compétences', projects: 'Projets', contact: 'Contact' },
+            nav: { about: 'À Propos', experience: 'Expérience', education: 'Formation', skills: 'Compétences', projects: 'Produits', contact: 'Contact' },
             hero: {
                 greeting: 'Bonjour, je suis',
                 title: 'Ingénieure Full-Stack',
-                description: "Je crée des solutions d'entreprise évolutives. Plus de 300K lignes de code en production. 99,5% de disponibilité. Experte en React, Node.js, C#, Python et AWS.",
+                description: "Je crée des solutions d'entreprise évolutives. 70% d'opérations plus rapides. 10+ hrs/semaine automatisées. 99,5% de disponibilité. Experte en React, Node.js et architecture cloud.",
                 cta: 'Me Contacter',
                 resume: 'Voir CV'
             },
@@ -169,6 +187,22 @@ function Main(){
             fetchWeather(40.7439, -74.0324);
         }
     }, []);
+
+    // Keyboard navigation for gallery
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!showDiniGallery) return;
+            if (e.key === 'ArrowLeft') {
+                setDiniScreenIndex(prev => prev === 0 ? diniScreenshots.length - 1 : prev - 1);
+            } else if (e.key === 'ArrowRight') {
+                setDiniScreenIndex(prev => prev === diniScreenshots.length - 1 ? 0 : prev + 1);
+            } else if (e.key === 'Escape') {
+                setShowDiniGallery(false);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [showDiniGallery, diniScreenshots.length]);
 
     // Typed.js initialization
     useEffect(() => {
@@ -278,6 +312,7 @@ function Main(){
                     <div className="nav-links">
                         <button onClick={() => scrollToSection('about')}>{t.nav.about}</button>
                         <button onClick={() => scrollToSection('experience')}>{t.nav.experience}</button>
+                        <button onClick={() => scrollToSection('education')}>{t.nav.education}</button>
                         <button onClick={() => scrollToSection('skills')}>{t.nav.skills}</button>
                         <button onClick={() => scrollToSection('projects')}>{t.nav.projects}</button>
                         <button onClick={() => scrollToSection('contact')}>{t.nav.contact}</button>
@@ -290,12 +325,7 @@ function Main(){
                             {language === 'en' ? 'FR' : 'EN'}
                         </button>
                     </div>
-                </div>
-            </nav>
-
-            {/* Hero Section */}
-            <section className="hero" id="home">
-                {/* Weather Widget */}
+                     {/* Weather Widget */}
                 {weather && (
                     <div className="floating-weather">
                         <div className="weather-mini">
@@ -307,9 +337,32 @@ function Main(){
                         </div>
                     </div>
                 )}
+                </div>
+            </nav>
+
+            {/* Hero Section */}
+            <section className="hero" id="home">
+                {/* Floating Background Icons */}
+                <div className="floating-icons">
+                    <FaReact className="floating-icon" />
+                    <FaNodeJs className="floating-icon" />
+                    <FaDatabase className="floating-icon" />
+                    <FaAws className="floating-icon" />
+                    <FaPython className="floating-icon" />
+                    <SiTypescript className="floating-icon" />
+                    <FaGitAlt className="floating-icon" />
+                    <SiExpress className="floating-icon" />
+                </div>
 
                 <div className="hero-content">
+                    <div className="hero-photo">
+                        <img src="/Untitled design.png" alt="Gabriela Morales" className="profile-photo" />
+                    </div>
                     <div className="hero-text">
+                        <div className="open-to-work-badge">
+                            <span className="badge-dot"></span>
+                            Open to Work
+                        </div>
                         <h1 className="hero-title">
                             {t.hero.greeting} <span className="highlight">Gabriela Morales</span>
                         </h1>
@@ -329,7 +382,7 @@ function Main(){
                         </div>
                         <div className="hero-social">
                             <a href="https://github.com/diniwigs" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                            <a href="https://www.linkedin.com/in/gabriela-morales" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                            <a href="https://www.linkedin.com/in/gabriela-morales-19bb21202/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
                             {/* <a href="mailto:gabrielamoralescg@gmail.com"><FaEnvelope /></a> */}
                         </div>
                     </div>
@@ -382,10 +435,10 @@ function Main(){
                                 <h3>Full-Stack Software Engineer</h3>
                                 <h4>DiNi Wigs</h4>
                                 <p>
-                                    Built enterprise manufacturing system serving multiple office locations with React frontend
-                                    (53+ components), Node.js backend (77+ REST endpoints), and SQL Server database. Integrated
-                                    QuickBooks API, Google Drive, and SMS services. Designed multi-cloud architecture on Railway,
-                                    Cloudflare, and Azure maintaining 99.5% uptime.
+                                    Built enterprise work order management and payment processing system serving multiple office locations with React frontend
+                                    (53+ components), Node.js backend (77+ REST endpoints), and SQL Server database. Implemented PCI-compliant Clover payment
+                                    integration with card tokenization, multi-terminal support (8 devices across 3 locations), and SMS-to-payment system.
+                                    Integrated QuickBooks API, Google Drive, and SMS services. Designed multi-cloud architecture maintaining 99.5% uptime.
                                 </p>
                                 <div className="tech-tags">
                                     <span><FaReact className="tech-icon" /> React</span>
@@ -393,6 +446,7 @@ function Main(){
                                     <span><FaDatabase className="tech-icon" /> SQL Server</span>
                                     <span><SiAzuredevops className="tech-icon" /> Azure</span>
                                     <span><SiQuickbooks className="tech-icon" /> QuickBooks API</span>
+                                    <span><FaDatabase className="tech-icon" /> Clover API</span>
                                 </div>
                             </div>
                         </div>
@@ -433,6 +487,34 @@ function Main(){
                                     <span><FaAws className="tech-icon" /> AWS</span>
                                     <span><SiPowerbi className="tech-icon" /> Power BI</span>
                                     <span><FaDatabase className="tech-icon" /> SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Education Section */}
+            <section className="section education-section fade-in-section" id="education">
+                <div className="container">
+                    <h2 className="section-title">Education</h2>
+                    <div className="education-card">
+                        <div className="education-icon">
+                            <FaGraduationCap />
+                        </div>
+                        <div className="education-content">
+                            <h3>Bachelor of Science in Computer Science and Technology</h3>
+                            <h4>University of South Carolina</h4>
+                            <span className="education-date">December 2021</span>
+                            <div className="coursework">
+                                <h5>Relevant Coursework:</h5>
+                                <div className="coursework-tags">
+                                    <span>Data Structures</span>
+                                    <span>Algorithms</span>
+                                    <span>Database Systems</span>
+                                    <span>Software Engineering</span>
+                                    <span>Web Development</span>
+                                    <span>Cloud Computing</span>
                                 </div>
                             </div>
                         </div>
@@ -634,20 +716,20 @@ function Main(){
                 </div>
             </section>
 
-            {/* Projects Section */}
+            {/* Products Section */}
             <section className="section projects-section fade-in-section" id="projects">
                 <div className="container">
-                    <h2 className="section-title">Featured Projects</h2>
+                    <h2 className="section-title">Software Products</h2>
                     <div className="projects-grid">
                         <div className="project-card-large">
                             <div className="project-header">
                                 <h3>DiNiTracker V2</h3>
-                                <span className="project-tag">Enterprise Application</span>
+                                <span className="project-tag">Client Project</span>
                             </div>
                             <p className="project-description">
-                                A comprehensive manufacturing and business management system serving multiple office locations
-                                across US and Israeli markets. Single-handedly developed 300,000+ lines of custom code handling
-                                complete order lifecycle, inventory tracking, CRM, and multi-region financial operations.
+                                Custom-built enterprise system for Dini Wigs, a wig repair and customization business.
+                                Single-handedly architected and deployed a full work order management and payment processing platform
+                                serving multiple office locations across US and Israeli markets.
                             </p>
                             <div className="project-features">
                                 <div className="feature-item">
@@ -658,14 +740,14 @@ function Main(){
                                     <h4>77+</h4>
                                     <span>REST Endpoints</span>
                                 </div>
-                                {/* <div className="feature-item">
-                                    <h4>15+</h4>
-                                    <span>Database Tables</span>
-                                </div> */}
                                 <div className="feature-item">
+                                    <h4>8</h4>
+                                    <span>Payment Terminals</span>
+                                </div>
+                                {/* <div className="feature-item">
                                     <h4>99.5%</h4>
                                     <span>Uptime</span>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="project-tech">
                                 <span><FaReact className="tech-icon" /> React</span>
@@ -677,93 +759,96 @@ function Main(){
                                 <span><SiCloudflare className="tech-icon" /> Cloudflare</span>
                                 <span><SiQuickbooks className="tech-icon" /> QuickBooks API</span>
                                 <span><SiGoogledrive className="tech-icon" /> Google Drive API</span>
+                                <span><FaDatabase className="tech-icon" /> Clover API</span>
                             </div>
                             <div className="project-highlights">
+                                <div className="highlight-item">
+                                    <strong>Clover Payment Integration:</strong> PCI DSS-compliant with card tokenization via PAKMS, multi-pay token support, and 8 terminals across 3 locations - submitted to Clover App Store
+                                </div>
+                                <div className="highlight-item">
+                                    <strong>Save Card Feature:</strong> Secure card-on-file system with duplicate detection, default card management, and complete audit trails with charge history
+                                </div>
+                                <div className="highlight-item">
+                                    <strong>SMS Payment Links:</strong> Text-to-payment system with JWT-based stateless architecture, auto tax calculation, and mobile-responsive payment pages
+                                </div>
                                 <div className="highlight-item">
                                     <strong>70%</strong> reduction in operational processing time
                                 </div>
                                 <div className="highlight-item">
                                     <strong>90%</strong> error reduction through automation
                                 </div>
-                                <div className="highlight-item">
-                                    Eliminated <strong>10+ hours weekly</strong> of manual financial entry
-                                </div>
                             </div>
                             <div className="project-demo">
-                                <a
-                                    href="https://dinitracker-v2.pages.dev/login"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <button
                                     className="demo-button"
+                                    onClick={() => setShowDiniGallery(true)}
                                 >
-                                    <FaExternalLinkAlt /> View Live Demo
-                                </a>
-                                <div className="demo-credentials">
-                                    <span className="demo-label">Demo Credentials:</span>
-                                    <span className="demo-cred">Username: <strong>noga</strong></span>
-                                    <span className="demo-cred">Password: <strong>123</strong></span>
-                                </div>
+                                    <FaImages /> View Screenshots
+                                </button>
                             </div>
                         </div>
 
-                        {/* Cooling Kings Project */}
+                        {/* HVAC AI Platform - Product for Sale */}
                         <div className="project-card-large">
                             <div className="project-header">
-                                <h3>K&E HVAC Platform</h3>
-                                <span className="project-tag">Full-Stack SaaS</span>
+                                <h3>HVAC AI Platform</h3>
+                                <span className="project-tag">SaaS Product</span>
                             </div>
                             <p className="project-description">
-                                A comprehensive HVAC service management platform featuring AI-powered customer support,
-                                real-time scheduling, and geographic work order visualization. Combines customer-facing
-                                website with GPT-4 chatbot for lead generation and enterprise admin dashboard for complete
-                                business operations including appointment booking, customer management, and technician dispatch.
+                                Multi-tenant SaaS platform for HVAC service companies combining full CRM functionality with three AI-powered agents.
+                                Includes web dashboard for dispatchers, mobile app for field technicians, and voice AI integration for 24/7 automated call handling.
+                                Perfect for HVAC companies looking to automate operations and never miss a customer call.
                             </p>
                             <div className="project-features">
                                 <div className="feature-item">
-                                    <h4>25+</h4>
-                                    <span>React Components</span>
+                                    <h4>3</h4>
+                                    <span>AI Agents</span>
+                                </div>
+                                <div className="feature-item">
+                                    <h4>24/7</h4>
+                                    <span>Voice Reception</span>
                                 </div>
                                 {/* <div className="feature-item">
-                                    <h4>3,748</h4>
-                                    <span>Lines of Code</span>
+                                    <h4>17</h4>
+                                    <span>Equipment Types</span>
                                 </div> */}
                                 <div className="feature-item">
-                                    <h4>5</h4>
-                                    <span>Service Modules</span>
-                                </div>
-                                <div className="feature-item">
-                                    <h4>AI</h4>
-                                    <span>Powered Chat</span>
+                                    <h4>RLS</h4>
+                                    <span>Multi-Tenant</span>
                                 </div>
                             </div>
                             <div className="project-tech">
                                 <span><FaReact className="tech-icon" /> React 18</span>
+                                <span><SiTypescript className="tech-icon" /> TypeScript</span>
+                                <span><FaReact className="tech-icon" /> React Native</span>
+                                <span><FaNodeJs className="tech-icon" /> Node.js</span>
+                                <span><SiExpress className="tech-icon" /> Express</span>
                                 <span><SiSupabase className="tech-icon" /> Supabase</span>
                                 <span><SiOpenai className="tech-icon" /> OpenAI GPT-4</span>
-                                <span><SiGooglemaps className="tech-icon" /> Google Maps</span>
-                                <span><SiTailwindcss className="tech-icon" /> Tailwind CSS</span>
-                                <span><FaAws className="tech-icon" /> AWS Amplify</span>
+                                <span><FaDatabase className="tech-icon" /> VAPI Voice AI</span>
+                                <span><SiRailway className="tech-icon" /> Railway</span>
                             </div>
                             <div className="project-highlights">
                                 <div className="highlight-item">
-                                    <strong>AI-Powered</strong> intelligent lead generation and customer support
+                                    <strong>Dispatcher Agent:</strong> Voice AI receptionist with caller recognition, dynamic company branding, customer context injection, emergency detection, and real-time scheduling
                                 </div>
                                 <div className="highlight-item">
-                                    <strong>Real-Time</strong> calendar scheduling with FullCalendar integration
+                                    <strong>Copilot Agent:</strong> Field technician AI assistant with image-based equipment identification, RAG-powered manual search, and voice-to-text for hands-free operation
                                 </div>
                                 <div className="highlight-item">
-                                    <strong>Geographic</strong> map-based work order visualization and dispatch
+                                    <strong>Reactivator Agent:</strong> Automated customer retention with segmentation, SMS/email campaigns, maintenance reminders, and revenue tracking per campaign
+                                </div>
+                                <div className="highlight-item">
+                                    <strong>Full CRM:</strong> Customers, properties, systems, equipment tracking, job calendar, technician dispatch with role-based access
                                 </div>
                             </div>
                             <div className="project-demo">
-                                <a
-                                    href="https://github.com/gabmora/coolingkings"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <button
+                                    onClick={() => scrollToSection('contact')}
                                     className="demo-button"
                                 >
-                                    <FaGithub /> View on GitHub
-                                </a>
+                                    <FaEnvelope /> Request Demo
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -884,13 +969,61 @@ function Main(){
                 </div>
             </section>
 
+            {/* Screenshot Gallery Modal */}
+            {showDiniGallery && (
+                <div className="gallery-modal-overlay" onClick={() => setShowDiniGallery(false)}>
+                    <div className="gallery-modal" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={() => setShowDiniGallery(false)}>
+                            <FaTimes />
+                        </button>
+                        <div className="modal-gallery">
+                            <button
+                                className="gallery-nav gallery-prev"
+                                onClick={() => setDiniScreenIndex(prev => prev === 0 ? diniScreenshots.length - 1 : prev - 1)}
+                            >
+                                <FaChevronLeft />
+                            </button>
+                            <div className="modal-screenshot-container">
+                                <img
+                                    src={diniScreenshots[diniScreenIndex].src}
+                                    alt={diniScreenshots[diniScreenIndex].label}
+                                    className="modal-screenshot-image"
+                                />
+                                <div className="modal-screenshot-label">
+                                    <FaImages /> {diniScreenshots[diniScreenIndex].label}
+                                    <span className="screenshot-counter">{diniScreenIndex + 1} / {diniScreenshots.length}</span>
+                                </div>
+                            </div>
+                            <button
+                                className="gallery-nav gallery-next"
+                                onClick={() => setDiniScreenIndex(prev => prev === diniScreenshots.length - 1 ? 0 : prev + 1)}
+                            >
+                                <FaChevronRight />
+                            </button>
+                        </div>
+                        <div className="modal-screenshot-dots">
+                            {diniScreenshots.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`screenshot-dot ${idx === diniScreenIndex ? 'active' : ''}`}
+                                    onClick={() => setDiniScreenIndex(idx)}
+                                />
+                            ))}
+                        </div>
+                        <div className="keyboard-hint">
+                            Use arrow keys to navigate, ESC to close
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Footer */}
             <footer className="footer">
                 <div className="footer-content">
-                    <p>&copy; 2025 Gabriela Morales. Built with React.</p>
+                    <p>&copy; 2026 Gabriela Morales. Built with React.</p>
                     <div className="footer-social">
                         <a href="https://github.com/diniwigs" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                        <a href="https://www.linkedin.com/in/gabriela-morales" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                        <a href="https://www.linkedin.com/in/gabriela-morales-19bb21202/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
                     </div>
                 </div>
             </footer>
