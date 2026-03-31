@@ -959,7 +959,9 @@ function Main(){
                                 </div>
                             </div>
                             <div className="contact-notary-box">
-                                <h3>{t.contact.notaryTitle}</h3>
+                                <h3>{t.contact.notaryTitle}
+                                <a href='http://www.notarypublicbackgroundcheck.com/verify.asp?vid=9A7B836FE66770588CEF7942DDB857C113294' target='_blank'><img src='http://www.notarypublicbackgroundcheck.com/images/npbc-ctv-l.gif' alt='Verify My Notary Background Check' /></a>
+                                </h3>
                                 <p>
                                     {t.contact.notaryDesc}
                                 </p>
