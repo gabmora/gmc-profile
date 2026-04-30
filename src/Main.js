@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import './Main.css';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFilePdf, FaChevronDown, FaCloudSun, FaSun, FaMoon, FaReact, FaNodeJs, FaPython, FaAws, FaDatabase, FaDocker, FaGitAlt, FaChevronLeft, FaChevronRight, FaImages, FaTimes, FaGraduationCap, FaCertificate } from 'react-icons/fa';
-import { SiExpress, SiMysql, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiCsharp, SiDotnet, SiAzuredevops, SiPowerbi, SiPostman, SiShopify, SiQuickbooks, SiCloudflare, SiRailway, SiGoogledrive, SiSupabase, SiOpenai } from 'react-icons/si';
+import { SiExpress, SiMysql, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiCsharp, SiDotnet, SiAzuredevops, SiPowerbi, SiPostman, SiShopify, SiQuickbooks, SiCloudflare, SiRailway, SiGoogledrive, SiSupabase, SiOpenai, SiStripe, SiTwilio, SiExpo } from 'react-icons/si';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import emailjs from 'emailjs-com';
@@ -210,6 +210,7 @@ function Main(){
             const typed = new Typed(typedRef.current, {
                 strings: [
                     'Full-Stack Software Engineer',
+                    'AI SaaS Architect',
                     'React Developer',
                     'Node.js Expert',
                     'Cloud Architect',
@@ -795,9 +796,9 @@ function Main(){
                                 <span className="project-tag">SaaS Product</span>
                             </div>
                             <p className="project-description">
-                                Multi-tenant SaaS platform for HVAC service companies combining full CRM functionality with three AI-powered agents.
-                                Includes web dashboard for dispatchers, mobile app for field technicians, and voice AI integration for 24/7 automated call handling.
-                                Perfect for HVAC companies looking to automate operations and never miss a customer call.
+                                Multi-tenant SaaS platform for HVAC service companies combining a full CRM with three AI-powered agents.
+                                Monorepo with a React 19 web dashboard for dispatchers, an Expo React Native mobile app for field technicians,
+                                and VAPI voice AI for 24/7 automated call handling — all backed by Supabase with Row-Level Security for data isolation per company.
                             </p>
                             <div className="project-features">
                                 <div className="feature-item">
@@ -808,38 +809,37 @@ function Main(){
                                     <h4>24/7</h4>
                                     <span>Voice Reception</span>
                                 </div>
-                                {/* <div className="feature-item">
-                                    <h4>17</h4>
-                                    <span>Equipment Types</span>
-                                </div> */}
                                 <div className="feature-item">
-                                    <h4>RLS</h4>
-                                    <span>Multi-Tenant</span>
+                                    <h4>4</h4>
+                                    <span>Apps in Monorepo</span>
                                 </div>
                             </div>
                             <div className="project-tech">
-                                <span><FaReact className="tech-icon" /> React 18</span>
+                                <span><FaReact className="tech-icon" /> React 19</span>
                                 <span><SiTypescript className="tech-icon" /> TypeScript</span>
+                                <span><SiExpo className="tech-icon" /> Expo</span>
                                 <span><FaReact className="tech-icon" /> React Native</span>
                                 <span><FaNodeJs className="tech-icon" /> Node.js</span>
-                                <span><SiExpress className="tech-icon" /> Express</span>
+                                <span><SiExpress className="tech-icon" /> Express 5</span>
                                 <span><SiSupabase className="tech-icon" /> Supabase</span>
                                 <span><SiOpenai className="tech-icon" /> OpenAI GPT-4</span>
                                 <span><FaDatabase className="tech-icon" /> VAPI Voice AI</span>
+                                <span><SiStripe className="tech-icon" /> Stripe</span>
+                                <span><SiTwilio className="tech-icon" /> Twilio</span>
                                 <span><SiRailway className="tech-icon" /> Railway</span>
                             </div>
                             <div className="project-highlights">
                                 <div className="highlight-item">
-                                    <strong>Dispatcher Agent:</strong> Voice AI receptionist with caller recognition, dynamic company branding, customer context injection, emergency detection, and real-time scheduling
+                                    <strong>Dispatcher Agent:</strong> Voice AI receptionist via VAPI — caller recognition, customer context injection, real-time scheduling, emergency escalation to on-call technician
                                 </div>
                                 <div className="highlight-item">
-                                    <strong>Copilot Agent:</strong> Field technician AI assistant with image-based equipment identification, RAG-powered manual search, and voice-to-text for hands-free operation
+                                    <strong>Copilot Agent:</strong> Mobile AI assistant for field technicians — GPT-4 Vision for equipment photo analysis, troubleshooting suggestions, and manual search
                                 </div>
                                 <div className="highlight-item">
-                                    <strong>Reactivator Agent:</strong> Automated customer retention with segmentation, SMS/email campaigns, maintenance reminders, and revenue tracking per campaign
+                                    <strong>Reactivator Agent:</strong> Automated customer retention — dormant customer segmentation, personalized SMS/email campaigns, and per-campaign revenue tracking
                                 </div>
                                 <div className="highlight-item">
-                                    <strong>Full CRM:</strong> Customers, properties, systems, equipment tracking, job calendar, technician dispatch with role-based access
+                                    <strong>Full CRM + Dispatch:</strong> Customers, properties, HVAC systems, jobs, technician GPS tracking, smart dispatch by proximity (Haversine), quote builder with Stripe payments
                                 </div>
                             </div>
                             <div className="project-demo">

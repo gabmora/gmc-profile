@@ -9,7 +9,10 @@
       "Bash(git push:*)",
       "Bash(powershell -Command:*)",
       "Bash(powershell:*)",
-      "Bash(del \"c:\\\\Users\\\\it\\\\gmc-profile\\\\rename-screens.ps1\")"
+      "Bash(del \"c:\\\\Users\\\\it\\\\gmc-profile\\\\rename-screens.ps1\")",
+      "Bash(gh api *)",
+      "Read(//c/Users/it/seller-finance-dapp/**)",
+      "Read(//c/Users/it/**)"
     ],
     "deny": [],
     "ask": []
