@@ -352,6 +352,18 @@ function Main() {
                 </div>
             </div>
 
+            {/* Testimonials */}
+            <div className="testimonials-strip">
+                <blockquote className="testimonial">
+                    <p>"Gabriela replaced three disconnected systems and cut processing time by 70% within weeks."</p>
+                    <cite>Kyle Seeling &mdash; OscarSoles</cite>
+                </blockquote>
+                <blockquote className="testimonial">
+                    <p>"The first engineer we've worked with who understood both operations and product."</p>
+                    <cite>Dini Weinberg &mdash; DiNi Wigs</cite>
+                </blockquote>
+            </div>
+
             {/* Services */}
             <section className="section fade-in-section" id="services">
                 <div className="container">
@@ -659,6 +671,13 @@ function Main() {
                                 <span><SiGoogledrive className="tech-icon" />Google Drive API</span>
                                 <span>Clover API</span>
                             </div>
+                            <div className="project-screenshot-wrap">
+                                <img
+                                    src="/dini-screens/dini-3.png"
+                                    alt="DiNi Wigs — Customer Profile with order history, loyalty data, and appointment tracking"
+                                    className="project-screenshot"
+                                />
+                            </div>
                             <div className="project-highlights">
                                 <div className="highlight-item"><strong>Clover Payment Integration:</strong> PCI DSS-compliant with card tokenization via PAKMS, multi-pay token support, and 8 terminals across 3 locations — submitted to Clover App Store</div>
                                 <div className="highlight-item"><strong>Save Card Feature:</strong> Secure card-on-file system with duplicate detection, default card management, and complete audit trails with charge history</div>
@@ -666,7 +685,7 @@ function Main() {
                             </div>
                             <div className="project-actions">
                                 <button className="demo-button" onClick={() => setShowDiniGallery(true)}>
-                                    <FaImages /> View Screenshots
+                                    <FaImages /> View all screenshots
                                 </button>
                             </div>
                         </div>
