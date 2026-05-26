@@ -37,8 +37,8 @@ function CV() {
                     <FaLinkedin /> LinkedIn
                 </a>
                 <span><FaMapMarkerAlt /> Hoboken, NJ (EST)</span>
-                <a href="https://studiocaballero.com" target="_blank" rel="noopener noreferrer">
-                    <FaExternalLinkAlt /> studiocaballero.com
+                <a href="https://gmcaballero.com" target="_blank" rel="noopener noreferrer">
+                    <FaExternalLinkAlt /> gmcaballero.com
                 </a>
             </div>
 
@@ -185,7 +185,7 @@ function CV() {
 
             <footer className="cv-footer">
                 <a href="/" className="cv-back">&#8592; Studio Caballero</a>
-                <span className="cv-footer-name">Gabriela Morales &middot; studiocaballero.com &middot; 2026</span>
+                <span className="cv-footer-name">Gabriela Morales &middot; gmcaballero.com &middot; 2026</span>
             </footer>
 
         </div>

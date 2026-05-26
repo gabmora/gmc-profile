@@ -12,7 +12,9 @@
       "Bash(del \"c:\\\\Users\\\\it\\\\gmc-profile\\\\rename-screens.ps1\")",
       "Bash(gh api *)",
       "Read(//c/Users/it/seller-finance-dapp/**)",
-      "Read(//c/Users/it/**)"
+      "Read(//c/Users/it/**)",
+      "Skill(impeccable:impeccable)",
+      "Bash(node *)"
     ],
     "deny": [],
     "ask": []
